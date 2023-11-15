@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #iframeContainer {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+        #buttonContainer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="iframeContainer">
+        <iframe id="iframe1" src="https://pagerduty.github.io/pd-live-react"></iframe>
+        <iframe id="iframe2" src="https://example.org" style="display: none;"></iframe>
+    </div>
+    <div id="buttonContainer">
+        <button id="toggleButton">Show Catalytic</button>
+    </div>
+    <script>
+        const iframe1 = document.getElementById('iframe1');
+        const iframe2 = document.getElementById('iframe2');
+        const toggleButton = document.getElementById('toggleButton');
+        let currentIframe = iframe1;
+
+        toggleButton.addEventListener('click', () => {
+            currentIframe.style.display = 'none';
+            currentIframe = currentIframe === iframe1 ? iframe2 : iframe1;
+            currentIframe.style.display = 'block';
+            toggleButton.innerHTML = currentIframe === iframe1 ? 'Show Catalytic' : 'Show PDlive';
+        });
+    </script>
+</body>
+</html>
